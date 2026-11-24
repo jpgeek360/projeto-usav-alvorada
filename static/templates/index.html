@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Adote um Amigo{% endblock %}
+
+{% block content %}
+<section class="p-4 mb-4 rounded-3 bg-verde-claro-suave">
+  <div class="row align-items-center mb-3">
+    <div class="col-md-8">
+      <h1 class="h3 fw-bold text-verde-escuro mb-1">Encontre seu novo melhor amigo</h1>
+      <p class="text-muted mb-0">Selecione os filtros abaixo para buscar automaticamente pelo perfil ideal.</p>
+    </div>
+    <div class="col-md-4 text-md-end mt-2 mt-md-0">
+      <button type="button" id="btnLimparFiltros" class="btn btn-sm btn-verde-claro">
+        <i class="bi bi-arrow-counterclockwise"></i> Limpar Filtros
+      </button>
+    </div>
+  </div>
+
+  <form id="formFiltros" class="row g-3">
+    <div class="col-md-4">
+      <label for="filtroEspecie" class="form-label fw-semibold text-verde-escuro">Espécie</label>
+      <select id="filtroEspecie" name="especie" class="form-select filtro-auto">
+        <option value="">Todas as espécies</option>
+        {% for esp in especies %}
+          <option value="{{ esp }}" {% if filtros.especie == esp %}selected{% endif %}>{{ esp }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="filtroGenero" class="form-label fw-semibold text-verde-escuro">Gênero</label>
+      <select id="filtroGenero" name="genero" class="form-select filtro-auto">
+        <option value="">Todos os gêneros</option>
+        <option value="Macho" {% if filtros.genero == "Macho" %}selected{% endif %}>Macho</option>
+        <option value="Fêmea" {% if filtros.genero == "Fêmea" %}selected{% endif %}>Fêmea</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="filtroPorte" class="form-label fw-semibold text-verde-escuro">Porte</label>
+      <select id="filtroPorte" name="porte" class="form-select filtro-auto">
+        <option value="">Todos os portes</option>
+        <option value="Pequeno" {% if filtros.porte == "Pequeno" %}selected{% endif %}>Pequeno</option>
+        <option value="Médio" {% if filtros.porte == "Médio" %}selected{% endif %}>Médio</option>
+        <option value="Grande" {% if filtros.porte == "Grande" %}selected{% endif %}>Grande</option>
+      </select>
+    </div>
+  </form>
+</section>
+
+<div id="gridContainer">
+  {% include "partials/_pet_grid.html" %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const selects = document.querySelectorAll(".filtro-auto");
+    const gridContainer = document.getElementById("gridContainer");
+    const btnLimpar = document.getElementById("btnLimparFiltros");
+
+    async function atualizarGrid(pagina = 1) {
+      const params = new URLSearchParams();
+      const especie = document.getElementById("filtroEspecie").value;
+      const genero = document.getElementById("filtroGenero").value;
+      const porte = document.getElementById("filtroPorte").value;
+
+      if (especie) params.set("especie", especie);
+      if (genero) params.set("genero", genero);
+      if (porte) params.set("porte", porte);
+      if (pagina > 1) params.set("pagina", pagina);
+
+      const queryString = params.toString();
+      const urlFetch = `/pets/filtrar${queryString ? "?" + queryString : ""}`;
+      const urlNavegador = `/${queryString ? "?" + queryString : ""}`;
+
+      gridContainer.style.opacity = "0.5";
+      try {
+        const response = await fetch(urlFetch);
+        if (response.ok) {
+          gridContainer.innerHTML = await response.text();
+          window.history.replaceState({}, "", urlNavegador);
+        }
+      } finally {
+        gridContainer.style.opacity = "1";
+      }
+    }
+
+    selects.forEach(select => {
+      select.addEventListener("change", () => atualizarGrid(1));
+    });
+
+    btnLimpar.addEventListener("click", () => {
+      selects.forEach(s => s.value = "");
+      atualizarGrid(1);
+    });
+
+    gridContainer.addEventListener("click", (e) => {
+      const btnPage = e.target.closest(".page-link[data-page]");
+      if (btnPage && !btnPage.closest(".disabled")) {
+        const paginaAlvo = parseInt(btnPage.getAttribute("data-page"), 10);
+        atualizarGrid(paginaAlvo);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  });
+</script>
+{% endblock %}
