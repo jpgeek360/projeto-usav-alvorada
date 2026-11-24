@@ -1,1 +1,278 @@
-
+{
+  "especies": [
+    "Cão",
+    "Gato"
+  ],
+  "vacinas": [
+    "Antirrábica",
+    "Giárdia",
+    "V10",
+    "V3 Felina",
+    "V4 Felina",
+    "V5 Felina",
+    "Vacina Puppy"
+  ],
+  "animais": [
+    {
+      "id": "1fb2fb7c8dd44523b5641ccef79f2c7a",
+      "nome": "Dudy",
+      "especie": "Cão",
+      "genero": "Macho",
+      "idade": "3 anos",
+      "porte": "Médio",
+      "peso": "40 kg",
+      "historia": "TestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewaTestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewaTestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewaTestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewaTestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewaTestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewaTestemdmewlmdewmdwelçdmelçmdlçwemdlwmelçmdmweqmedmewa",
+      "tempo_abrigo": "1 ano",
+      "vacinas": [
+        "Antirrábica",
+        "V4 Felina"
+      ],
+      "foto_principal": "/static/uploads/4e2881347dcf48568ccc1c8084065e5e.jpg",
+      "galeria": [
+        "/static/uploads/ab162a9a4c884c1e8205b59058a469d4.jpg",
+        "/static/uploads/eed5b63d6be54345b22f8d3bb489ba1d.jpg"
+      ],
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "nome": "Thor",
+      "especie": "Cão",
+      "genero": "Macho",
+      "idade": "2 anos",
+      "porte": "Grande",
+      "peso": "28 kg",
+      "historia": "Resgatado próximo a uma rodovia, Thor é extremamente dócil, brincalhão e adora passeios ao ar livre. Convive muito bem com outros cães.",
+      "tempo_abrigo": "6 meses",
+      "vacinas": [
+        "V10",
+        "Antirrábica",
+        "Giárdia"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-01T10:00:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0002-4000-8000-000000000002",
+      "nome": "Luna",
+      "especie": "Gato",
+      "genero": "Fêmea",
+      "idade": "1 ano e 3 meses",
+      "porte": "Pequeno",
+      "peso": "3,8 kg",
+      "historia": "Encontrada ainda filhote em uma praça, Luna é carinhosa, curiosa e gosta de dormir perto da janela observando o movimento.",
+      "tempo_abrigo": "4 meses",
+      "vacinas": [
+        "V4 Felina",
+        "Antirrábica"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-02T11:30:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0003-4000-8000-000000000003",
+      "nome": "Bob",
+      "especie": "Cão",
+      "genero": "Macho",
+      "idade": "4 anos",
+      "porte": "Médio",
+      "peso": "16 kg",
+      "historia": "Bob é um companheiro calmo e equilibrado, ideal para apartamentos ou casas com quintal. Já é castrado e adora receber carinho na barriga.",
+      "tempo_abrigo": "1 ano",
+      "vacinas": [
+        "V10",
+        "Antirrábica"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-03T09:15:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0004-4000-8000-000000000004",
+      "nome": "Mel",
+      "especie": "Cão",
+      "genero": "Fêmea",
+      "idade": "8 meses",
+      "porte": "Pequeno",
+      "peso": "6,5 kg",
+      "historia": "Filhote cheia de energia e inteligência. Aprende comandos rápido e se adapta facilmente a famílias com crianças.",
+      "tempo_abrigo": "2 meses",
+      "vacinas": [
+        "V10 (3 doses)",
+        "Antirrábica"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-04T14:20:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0005-4000-8000-000000000005",
+      "nome": "Simba",
+      "especie": "Gato",
+      "genero": "Macho",
+      "idade": "3 anos",
+      "porte": "Médio",
+      "peso": "5,1 kg",
+      "historia": "Gato laranja muito sociável e ronronento. Testado negativo para FIV e FeLV, pronto para ser o rei do sofá.",
+      "tempo_abrigo": "8 meses",
+      "vacinas": [
+        "V5 Felina",
+        "Antirrábica"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-05T16:45:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0006-4000-8000-000000000006",
+      "nome": "Amora",
+      "especie": "Cão",
+      "genero": "Fêmea",
+      "idade": "5 anos",
+      "porte": "Grande",
+      "peso": "25 kg",
+      "historia": "Amora é protetora, leal e muito tranquila dentro de casa. Procura um lar onde possa receber atenção e caminhadas diárias.",
+      "tempo_abrigo": "1 ano e 4 meses",
+      "vacinas": [
+        "V10",
+        "Antirrábica",
+        "Tosse dos Canis"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-06T08:10:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0007-4000-8000-000000000007",
+      "nome": "Nina",
+      "especie": "Gato",
+      "genero": "Fêmea",
+      "idade": "6 meses",
+      "porte": "Pequeno",
+      "peso": "2,4 kg",
+      "historia": "Filhote brincalhona que adora bolinhas de papel e arranhadores. Ideal para quem já possui outro gato dócil.",
+      "tempo_abrigo": "1 mês",
+      "vacinas": [
+        "V4 Felina"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-07T12:00:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0008-4000-8000-000000000008",
+      "nome": "Zeus",
+      "especie": "Cão",
+      "genero": "Macho",
+      "idade": "3 anos",
+      "porte": "Grande",
+      "peso": "31 kg",
+      "historia": "Apesar do tamanho imponente, Zeus é um gigante gentil. Ama água, brinquedos de corda e companhia humana.",
+      "tempo_abrigo": "9 meses",
+      "vacinas": [
+        "V10",
+        "Antirrábica"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-08T15:30:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0009-4000-8000-000000000009",
+      "nome": "Chico",
+      "especie": "Cão",
+      "genero": "Macho",
+      "idade": "2 anos",
+      "porte": "Pequeno",
+      "peso": "7,2 kg",
+      "historia": "Pequeno no tamanho e gigante no afeto. Chico já anda na guia sem puxar e faz amizade com todos na vizinhança.",
+      "tempo_abrigo": "3 meses",
+      "vacinas": [
+        "V10",
+        "Antirrábica",
+        "Giárdia"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-09T17:00:00+00:00",
+      "adotado": false
+    },
+    {
+      "id": "a1b2c3d4-0010-4000-8000-000000000010",
+      "nome": "Mia",
+      "especie": "Gato",
+      "genero": "Fêmea",
+      "idade": "2 anos e 6 meses",
+      "porte": "Médio",
+      "peso": "4,3 kg",
+      "historia": "Mia é independente, silenciosa e muito limpa. Castrada, microchipada e aguardando um lar telado e seguro.",
+      "tempo_abrigo": "5 meses",
+      "vacinas": [
+        "V5 Felina",
+        "Antirrábica"
+      ],
+      "foto_principal": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80",
+      "galeria": [
+        "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80"
+      ],
+      "criado_em": "2026-10-10T18:10:00+00:00",
+      "adotado": false
+    }
+  ],
+  "servicos_contato": [
+    {
+      "titulo": "Adoção Responsável",
+      "descricao": "Agende visitas ao abrigo, tire dúvidas sobre o perfil dos animais disponíveis e acompanhe sua solicitação de adoção.",
+      "icone": "bi-heart-pulse",
+      "whatsapp": "5551999990000"
+    },
+    {
+      "titulo": "Castração Gratuita",
+      "descricao": "Informações sobre critérios de cadastro, documentação necessária e calendário dos mutirões de esterilização de cães e gatos.",
+      "icone": "bi-scissors",
+      "whatsapp": "5551999990000"
+    },
+    {
+      "titulo": "Vacinação e Vermifugação",
+      "descricao": "Consulte datas de campanhas de imunização antirrábica e polivalente para animais da comunidade.",
+      "icone": "bi-shield-plus",
+      "whatsapp": "5551999990000"
+    },
+    {
+      "titulo": "Atendimento Veterinário e Resgate",
+      "descricao": "Orientações sobre atendimento clínico básico e comunicação de casos de maus-tratos ou animais em risco.",
+      "icone": "bi-hospital",
+      "whatsapp": "5551999990000"
+    }
+  ]
+}
