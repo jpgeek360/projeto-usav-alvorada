@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro de Vacinas - AUAUVORADA{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+      <div class="card-header bg-verde-claro-suave border-bottom py-3 px-4">
+        <h1 class="h4 fw-bold text-verde-escuro mb-0">Cadastro de Vacinas</h1>
+      </div>
+      <div class="card-body p-4 bg-white">
+        <form method="POST" class="row g-3 align-items-end">
+          <div class="col-sm-8">
+            <label for="nomeVacina" class="form-label fw-semibold text-verde-escuro">Nome * <small class="text-muted fw-normal">(máx. 60)</small></label>
+            <input
+              type="text"
+              id="nomeVacina"
+              name="nome"
+              maxlength="60"
+              class="form-control"
+              required
+              placeholder="Ex.: V10, Antirrábica, V4 Felina"
+            >
+          </div>
+          <div class="col-sm-4">
+            <button type="submit" class="btn btn-verde-escuro w-100">
+              <i class="bi bi-plus-lg me-1"></i>Cadastrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 bg-white">
+      <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+        <h2 class="h6 fw-bold text-verde-escuro mb-0">Vacinas Cadastradas ({{ vacinas|length }})</h2>
+      </div>
+      <div class="card-body p-0">
+        {% if vacinas %}
+          <ul class="list-group list-group-flush rounded-bottom-4">
+            {% for vacina in vacinas %}
+              <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-3 bg-white">
+                <span class="fw-medium text-verde-escuro">
+                  <i class="bi bi-shield-check me-2"></i>{{ vacina }}
+                </span>
+                <div class="d-flex align-items-center gap-2">
+                  <a href="{{ url_for('pets.editar_vacina', nome=vacina) }}" class="btn btn-sm btn-verde-claro" title="Alterar vacina">
+                    <i class="bi bi-pencil-square me-1"></i>Alterar
+                  </a>
+                  <form method="POST" action="{{ url_for('pets.remover_vacina') }}" class="m-0">
+                    <input type="hidden" name="nome" value="{{ vacina }}">
+                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Remover vacina">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </form>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="p-4 text-center text-muted">
+            Nenhuma vacina cadastrada no momento.
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

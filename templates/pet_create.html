@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Animal - AUAUVORADA{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm rounded-4 bg-white">
+      <div class="card-header bg-verde-claro-suave border-bottom py-3 px-4">
+        <h1 class="h4 fw-bold text-verde-escuro mb-0">Cadastrar Novo Animal para Adoção</h1>
+      </div>
+      <div class="card-body p-4 bg-white">
+        <form method="POST" enctype="multipart/form-data" class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-verde-escuro">Nome * <small class="text-muted fw-normal">(máx. 60)</small></label>
+            <input type="text" name="nome" maxlength="60" class="form-control" required placeholder="Ex.: Paçoca">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-verde-escuro">Espécie *</label>
+            <select name="especie" class="form-select" required>
+              <option value="" disabled selected>Selecione a espécie</option>
+              {% for esp in especies %}
+                <option value="{{ esp }}">{{ esp }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label fw-semibold text-verde-escuro">Gênero *</label>
+            <select name="genero" class="form-select" required>
+              {% for g in generos %}
+                <option value="{{ g }}">{{ g }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label fw-semibold text-verde-escuro">Porte *</label>
+            <select name="porte" class="form-select" required>
+              {% for p in portes %}
+                <option value="{{ p }}">{{ p }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label fw-semibold text-verde-escuro">Idade * <small class="text-muted fw-normal">(máx. 30)</small></label>
+            <input type="text" name="idade" maxlength="30" class="form-control" required placeholder="Ex.: 2 anos">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-verde-escuro">Peso * <small class="text-muted fw-normal">(máx. 30)</small></label>
+            <input type="text" name="peso" maxlength="30" class="form-control" required placeholder="Ex.: 12 kg">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-verde-escuro">Tempo no abrigo * <small class="text-muted fw-normal">(máx. 60)</small></label>
+            <input type="text" name="tempo_abrigo" maxlength="60" class="form-control" required placeholder="Ex.: 4 meses">
+          </div>
+
+          <div class="col-12">
+            <label class="form-label fw-semibold text-verde-escuro d-block mb-1">
+              Vacinas aplicadas <small class="text-muted fw-normal">(opcional — clique para selecionar)</small>
+            </label>
+            {% if vacinas %}
+              <div class="p-3 rounded-3 vacinas-box d-flex flex-wrap gap-2">
+                {% for vacina in vacinas %}
+                  <div>
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="vacinas"
+                      id="vacina_{{ loop.index }}"
+                      value="{{ vacina }}"
+                      autocomplete="off"
+                    >
+                    <label class="btn btn-vacina-pill rounded-pill px-3 py-1" for="vacina_{{ loop.index }}">
+                      <i class="bi bi-check-lg me-1 icon-check"></i>{{ vacina }}
+                    </label>
+                  </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p class="text-muted small mb-0">Nenhuma vacina disponível no cadastro.</p>
+            {% endif %}
+          </div>
+
+          <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+              <label for="campoHistoria" class="form-label fw-semibold text-verde-escuro">História *</label>
+              <small id="contadorHistoria" class="text-muted">0 / 1000</small>
+            </div>
+            <textarea id="campoHistoria" name="historia" rows="4" maxlength="1000" class="form-control" required placeholder="Conte o temperamento, histórico de resgate e convivência..."></textarea>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-verde-escuro">Foto Principal (Capa) *</label>
+            <input type="file" name="foto_principal" accept="image/*" class="form-control" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold text-verde-escuro">Galeria de Fotos (Opcional)</label>
+            <input type="file" name="galeria" accept="image/*" class="form-control" multiple>
+          </div>
+
+          <div class="col-12 pt-3 d-flex justify-content-end gap-2">
+            <a href="{{ url_for('main.index') }}" class="btn btn-verde-claro">Cancelar</a>
+            <button type="submit" class="btn btn-verde-escuro px-4">Salvar Cadastro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const campoHistoria = document.getElementById("campoHistoria");
+    const contador = document.getElementById("contadorHistoria");
+    if (campoHistoria && contador) {
+      campoHistoria.addEventListener("input", () => {
+        contador.textContent = `${campoHistoria.value.length} / 1000`;
+      });
+    }
+  });
+</script>
+{% endblock %}

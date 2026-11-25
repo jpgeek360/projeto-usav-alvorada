@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre o Projeto{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="p-5 mb-5 rounded-4 bg-verde-claro-suave">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-6">
+      <span class="badge btn-verde-escuro px-3 py-2 mb-3">Política Pública e Proteção Animal</span>
+      <h1 class="display-6 fw-bold text-verde-escuro mb-3">Transformando vidas através da adoção consciente</h1>
+      <p class="lead fs-6 text-secondary">
+        O projeto conecta cães e gatos resgatados em situação de vulnerabilidade a famílias preparadas para oferecer cuidado, saúde e afeto permanente.
+      </p>
+    </div>
+    <div class="col-lg-6">
+      <img
+        src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1000&q=80"
+        alt="Cão e gato juntos"
+        class="img-fluid rounded-4 shadow"
+      >
+    </div>
+  </div>
+</section>
+
+<!-- Bloco de Missão e Estrutura -->
+<section class="mb-5">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-6 order-lg-2">
+      <h2 class="h3 fw-bold text-verde-escuro mb-3">Reabilitação, Saúde e Controle Populacional</h2>
+      <p class="text-secondary">
+        Cada animal acolhido passa por protocolo clínico completo: avaliação veterinária, vermifugação, imunização com vacinas polivalentes e antirrábica, além de castração e microchipagem.
+      </p>
+      <p class="text-secondary mb-0">
+        Nossa atuação também promove mutirões comunitários de esterilização e campanhas educativas contra o abandono.
+      </p>
+    </div>
+    <div class="col-lg-6 order-lg-1">
+      <img
+        src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80"
+        alt="Cães correndo no parque"
+        class="img-fluid rounded-4 shadow-sm"
+      >
+    </div>
+  </div>
+</section>
+
+<!-- Seção de Vídeo Institucional -->
+<section class="p-4 p-lg-5 rounded-4 bg-verde-claro-suave text-center">
+  <h2 class="h3 fw-bold text-verde-escuro mb-2">Conheça Nosso Trabalho na Prática</h2>
+  <p class="text-muted mb-4">Assista ao vídeo institucional sobre o acolhimento e a rotina de cuidados no abrigo.</p>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+        <iframe
+          src="#"
+          title="Vídeo Institucional do Projeto"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

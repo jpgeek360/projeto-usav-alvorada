@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pet.nome }} - Ficha do Animal{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <a href="{{ url_for('main.index') }}" class="btn btn-sm btn-verde-claro">
+    <i class="bi bi-arrow-left"></i> Voltar para o catálogo
+  </a>
+  <a href="{{ url_for('pets.editar', pet_id=pet.id) }}" class="btn btn-sm btn-verde-escuro">
+    <i class="bi bi-pencil-square me-1"></i> Alterar animal
+  </a>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+  <div class="card-body p-4 p-lg-5 bg-white">
+    <div class="row g-4 g-lg-5">
+      <!-- Coluna Esquerda: Foto Principal + Galeria -->
+      <div class="col-lg-5">
+        <img id="fotoDestaque" src="{{ pet.foto_principal }}" alt="{{ pet.nome }}" class="ficha-foto-principal shadow-sm mb-3">
+
+        {% if todas_fotos|length > 1 %}
+          <h6 class="fw-bold text-verde-escuro mb-2">Galeria de Fotos</h6>
+          <div class="d-flex flex-wrap gap-2">
+            {% for foto in todas_fotos %}
+              <img
+                src="{{ foto }}"
+                alt="Foto {{ loop.index }} de {{ pet.nome }}"
+                class="galeria-thumb {% if loop.first %}active{% endif %}"
+                onclick="trocarFotoPrincipal(this, '{{ foto }}')"
+              >
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Coluna Direita: Ficha Técnica Completa -->
+      <div class="col-lg-7">
+        <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-3 mb-4">
+          <div>
+            <span class="badge badge-verde-claro mb-2 px-3 py-2">{{ pet.especie }}</span>
+            <h1 class="display-6 fw-bold text-verde-escuro mb-0">{{ pet.nome }}</h1>
+          </div>
+          <span class="text-muted small">Código: #{{ pet.id[:8] }}</span>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md-4">
+            <div class="p-3 rounded-3 bg-verde-claro-suave h-100">
+              <small class="text-muted d-block">Espécie</small>
+              <strong class="text-verde-escuro">{{ pet.especie }}</strong>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="p-3 rounded-3 bg-verde-claro-suave h-100">
+              <small class="text-muted d-block">Gênero</small>
+              <strong class="text-verde-escuro">{{ pet.genero }}</strong>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="p-3 rounded-3 bg-verde-claro-suave h-100">
+              <small class="text-muted d-block">Idade</small>
+              <strong class="text-verde-escuro">{{ pet.idade }}</strong>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="p-3 rounded-3 bg-verde-claro-suave h-100">
+              <small class="text-muted d-block">Porte</small>
+              <strong class="text-verde-escuro">{{ pet.porte }}</strong>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="p-3 rounded-3 bg-verde-claro-suave h-100">
+              <small class="text-muted d-block">Peso</small>
+              <strong class="text-verde-escuro">{{ pet.peso }}</strong>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="p-3 rounded-3 bg-verde-claro-suave h-100">
+              <small class="text-muted d-block">Tempo no abrigo</small>
+              <strong class="text-verde-escuro">{{ pet.tempo_abrigo }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <h5 class="fw-bold text-verde-escuro">Vacinas</h5>
+          {% if pet.vacinas %}
+            <div class="d-flex flex-wrap gap-2">
+              {% for vacina in pet.vacinas %}
+                <span class="badge badge-verde-claro px-3 py-2">
+                  <i class="bi bi-check-circle-fill me-1"></i>{{ vacina }}
+                </span>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-muted small">Em processo de imunização.</p>
+          {% endif %}
+        </div>
+
+        <div class="mb-4">
+          <h5 class="fw-bold text-verde-escuro">História</h5>
+          <p class="lead fs-6 text-secondary lh-lg">{{ pet.historia }}</p>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <a href="{{ link_whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-verde-escuro btn-lg py-3 shadow-sm">
+            <i class="bi bi-heart-fill me-2"></i>Adote esse pet!
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function trocarFotoPrincipal(elementoThumb, urlFoto) {
+    document.getElementById("fotoDestaque").src = urlFoto;
+    document.querySelectorAll(".galeria-thumb").forEach(img => img.classList.remove("active"));
+    elementoThumb.classList.add("active");
+  }
+</script>
+{% endblock %}
