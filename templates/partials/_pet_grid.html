@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-muted small">
+    Exibindo <strong>{{ pets|length }}</strong> de <strong>{{ total }}</strong> animais disponíveis
+  </span>
+  <span class="badge badge-verde-claro px-3 py-2">Página {{ pagina_atual }} de {{ total_paginas }}</span>
+</div>
+
+{% if pets %}
+  <!-- Grid 4 colunas x 5 linhas (20 itens por página) -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    {% for pet in pets %}
+      <div class="col">
+        <a href="{{ url_for('pets.detalhe', pet_id=pet.id) }}" class="text-decoration-none text-dark">
+          <div class="card pet-card h-100">
+            <img src="{{ pet.foto_principal }}" alt="{{ pet.nome }}" class="pet-card-img" loading="lazy">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="card-title fw-bold text-verde-escuro mb-0">{{ pet.nome }}</h5>
+                <span class="badge badge-verde-claro">{{ pet.especie }}</span>
+              </div>
+              <div class="d-flex flex-wrap gap-1 mt-2">
+                <span class="badge bg-light text-dark border">{{ pet.genero }}</span>
+                <span class="badge bg-light text-dark border">Porte {{ pet.porte }}</span>
+                <span class="badge bg-light text-dark border">{{ pet.idade }}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if total_paginas > 1 %}
+    <nav aria-label="Paginação de animais" class="mt-5">
+      <ul class="pagination justify-content-center">
+        <li class="page-item {% if pagina_atual <= 1 %}disabled{% endif %}">
+          <button class="page-link" data-page="{{ pagina_atual - 1 }}">Anterior</button>
+        </li>
+        {% for p in range(1, total_paginas + 1) %}
+          <li class="page-item {% if p == pagina_atual %}active{% endif %}">
+            <button class="page-link" data-page="{{ p }}">{{ p }}</button>
+          </li>
+        {% endfor %}
+        <li class="page-item {% if pagina_atual >= total_paginas %}disabled{% endif %}">
+          <button class="page-link" data-page="{{ pagina_atual + 1 }}">Próxima</button>
+        </li>
+      </ul>
+    </nav>
+  {% endif %}
+{% else %}
+  <div class="text-center py-5 bg-verde-claro-suave rounded-3">
+    <i class="bi bi-search fs-1 text-verde-escuro"></i>
+    <h5 class="mt-3 text-verde-escuro fw-bold">Nenhum animal encontrado com esses filtros</h5>
+    <p class="text-muted mb-0">Tente alterar as opções de Espécie, Gênero ou Porte acima.</p>
+  </div>
+{% endif %}
