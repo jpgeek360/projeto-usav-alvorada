@@ -14,7 +14,7 @@ else:
 
 
 class JsonPetRepository(PetRepository):
-    """Implementa��o concreta baseada em arquivo JSON com escrita at�mica e lock de SO."""
+    """Implementação concreta baseada em arquivo JSON com escrita atômica e lock de SO."""
 
     def __init__(self, filepath: Path) -> None:
         self.filepath = Path(filepath)
@@ -39,7 +39,12 @@ class JsonPetRepository(PetRepository):
 
     def _read_raw(self) -> dict:
         if not self.filepath.exists():
-            return {"animais": [], "servicos_contato": []}
+            return {
+                "especies": ["Cão", "Gato"],
+                "vacinas": [],
+                "animais": [],
+                "servicos_contato": [],
+            }
         with open(self.filepath, "r", encoding="utf-8") as f:
             return json.load(f)
 
@@ -119,8 +124,71 @@ class JsonPetRepository(PetRepository):
     def listar_especies_distintas(self) -> List[str]:
         with self._file_lock():
             raw = self._read_raw()
+        especies_cadastradas = [str(e).strip() for e in raw.get("especies", []) if str(e).strip()]
+        if especies_cadastradas:
+            return especies_cadastradas
         especies = {item["especie"] for item in raw.get("animais", []) if item.get("especie")}
         return sorted(especies)
+
+    def listar_vacinas(self) -> List[str]:
+        with self._file_lock():
+            raw = self._read_raw()
+        vacinas = [str(v).strip() for v in raw.get("vacinas", []) if str(v).strip()]
+        return sorted(vacinas, key=lambda x: x.lower())
+
+    def adicionar_vacina(self, nome: str) -> str:
+        nome_limpo = nome.strip()
+        with self._file_lock():
+            raw = self._read_raw()
+            vacinas = [str(v).strip() for v in raw.get("vacinas", []) if str(v).strip()]
+            if any(v.lower() == nome_limpo.lower() for v in vacinas):
+                raise ValueError(f"A vacina '{nome_limpo}' já está cadastrada.")
+            vacinas.append(nome_limpo)
+            raw["vacinas"] = sorted(vacinas, key=lambda x: x.lower())
+            self._write_atomic(raw)
+        return nome_limpo
+
+    def atualizar_vacina(self, nome_antigo: str, nome_novo: str) -> str:
+        antigo_limpo = nome_antigo.strip()
+        novo_limpo = nome_novo.strip()
+        with self._file_lock():
+            raw = self._read_raw()
+            vacinas = [str(v).strip() for v in raw.get("vacinas", []) if str(v).strip()]
+
+            if not any(v.lower() == antigo_limpo.lower() for v in vacinas):
+                raise ValueError("Vacina original não encontrada.")
+
+            if any(v.lower() == novo_limpo.lower() and v.lower() != antigo_limpo.lower() for v in vacinas):
+                raise ValueError(f"Já existe uma vacina cadastrada com o nome '{novo_limpo}'.")
+
+            vacinas_atualizadas = [
+                novo_limpo if v.lower() == antigo_limpo.lower() else v
+                for v in vacinas
+            ]
+            raw["vacinas"] = sorted(vacinas_atualizadas, key=lambda x: x.lower())
+
+            for animal in raw.get("animais", []):
+                vacinas_animal = animal.get("vacinas", [])
+                if vacinas_animal:
+                    animal["vacinas"] = [
+                        novo_limpo if v.lower() == antigo_limpo.lower() else v
+                        for v in vacinas_animal
+                    ]
+
+            self._write_atomic(raw)
+        return novo_limpo
+
+    def remover_vacina(self, nome: str) -> bool:
+        nome_limpo = nome.strip()
+        with self._file_lock():
+            raw = self._read_raw()
+            vacinas = [str(v).strip() for v in raw.get("vacinas", []) if str(v).strip()]
+            filtradas = [v for v in vacinas if v.lower() != nome_limpo.lower()]
+            if len(filtradas) == len(vacinas):
+                return False
+            raw["vacinas"] = filtradas
+            self._write_atomic(raw)
+        return True
 
     def listar_servicos_contato(self) -> List[dict]:
         with self._file_lock():
