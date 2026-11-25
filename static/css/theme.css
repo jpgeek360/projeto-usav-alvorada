@@ -1,1 +1,191 @@
+:root {
+  --cor-branco: #ffffff;
+  --cor-patinhas: #f2f2ff;
+  --cor-verde-claro: #81c784;
+  --cor-verde-claro-suave: #e8f5e9;
+  --cor-verde-escuro: #1b5e20;
+  --cor-verde-escuro-hover: #144718;
+}
 
+body {
+  background-color: var(--cor-branco);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23f2f2ff'%3E%3Cg transform='translate(28,125) rotate(38)'%3E%3Cellipse cx='0' cy='2' rx='4.2' ry='3.5'/%3E%3Ccircle cx='-4.5' cy='-3' r='1.7'/%3E%3Ccircle cx='-1.6' cy='-5' r='1.8'/%3E%3Ccircle cx='1.8' cy='-5' r='1.8'/%3E%3Ccircle cx='4.6' cy='-2.8' r='1.7'/%3E%3C/g%3E%3Cg transform='translate(74,106) rotate(48)'%3E%3Cellipse cx='0' cy='2' rx='4.2' ry='3.5'/%3E%3Ccircle cx='-4.5' cy='-3' r='1.7'/%3E%3Ccircle cx='-1.6' cy='-5' r='1.8'/%3E%3Ccircle cx='1.8' cy='-5' r='1.8'/%3E%3Ccircle cx='4.6' cy='-2.8' r='1.7'/%3E%3C/g%3E%3Cg transform='translate(106,46) rotate(38)'%3E%3Cellipse cx='0' cy='2' rx='4.2' ry='3.5'/%3E%3Ccircle cx='-4.5' cy='-3' r='1.7'/%3E%3Ccircle cx='-1.6' cy='-5' r='1.8'/%3E%3Ccircle cx='1.8' cy='-5' r='1.8'/%3E%3Ccircle cx='4.6' cy='-2.8' r='1.7'/%3E%3C/g%3E%3Cg transform='translate(152,26) rotate(48)'%3E%3Cellipse cx='0' cy='2' rx='4.2' ry='3.5'/%3E%3Ccircle cx='-4.5' cy='-3' r='1.7'/%3E%3Ccircle cx='-1.6' cy='-5' r='1.8'/%3E%3Ccircle cx='1.8' cy='-5' r='1.8'/%3E%3Ccircle cx='4.6' cy='-2.8' r='1.7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  color: #212529;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Navbar & Footer */
+.navbar-pet {
+  background-color: var(--cor-verde-escuro);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-pet .navbar-brand,
+.navbar-pet .nav-link {
+  color: var(--cor-branco) !important;
+  border-radius: 0.5rem;
+  padding-inline: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-pet .nav-link:hover,
+.navbar-pet .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.16);
+  font-weight: 600;
+}
+
+.navbar-pet .dropdown-menu {
+  background-color: var(--cor-branco);
+}
+
+.navbar-pet .dropdown-item:hover,
+.navbar-pet .dropdown-item.active-admin {
+  background-color: var(--cor-verde-claro-suave);
+  color: var(--cor-verde-escuro);
+  font-weight: 600;
+}
+
+.footer-pet {
+  background-color: var(--cor-verde-escuro);
+  color: var(--cor-branco);
+}
+
+/* Paleta Verde Claro / Verde Escuro */
+.bg-verde-claro-suave {
+  background-color: var(--cor-verde-claro-suave) !important;
+}
+
+.text-verde-escuro {
+  color: var(--cor-verde-escuro) !important;
+}
+
+.btn-verde-escuro {
+  background-color: var(--cor-verde-escuro);
+  border-color: var(--cor-verde-escuro);
+  color: var(--cor-branco);
+  font-weight: 600;
+}
+
+.btn-verde-escuro:hover {
+  background-color: var(--cor-verde-escuro-hover);
+  border-color: var(--cor-verde-escuro-hover);
+  color: var(--cor-branco);
+}
+
+.btn-verde-claro {
+  background-color: var(--cor-verde-claro-suave);
+  border: 1px solid var(--cor-verde-claro);
+  color: var(--cor-verde-escuro);
+  font-weight: 600;
+}
+
+.btn-verde-claro:hover {
+  background-color: var(--cor-verde-claro);
+  color: var(--cor-branco);
+}
+
+.badge-verde-claro {
+  background-color: var(--cor-verde-claro-suave);
+  color: var(--cor-verde-escuro);
+  border: 1px solid var(--cor-verde-claro);
+}
+
+/* Cards do Grid 4x5 */
+.pet-card {
+  background-color: var(--cor-branco);
+  border: 1px solid #e0ede2;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(27, 94, 32, 0.12);
+}
+
+.pet-card-img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* Ficha do Animal & Galeria */
+.ficha-foto-principal {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.galeria-thumb {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.75;
+  transition: all 0.2s ease;
+}
+
+.galeria-thumb:hover,
+.galeria-thumb.active {
+  border-color: var(--cor-verde-escuro);
+  opacity: 1;
+}
+
+/* Paginação */
+.pagination .page-link {
+  color: var(--cor-verde-escuro);
+  border-color: #cfe5d2;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--cor-verde-escuro);
+  border-color: var(--cor-verde-escuro);
+  color: var(--cor-branco);
+}
+
+/* Seleção de vacinas (Branco, Verde Claro e Verde Escuro) */
+.vacinas-box {
+  background-color: var(--cor-verde-claro-suave);
+  border: 1px solid var(--cor-verde-claro);
+}
+
+.btn-vacina-pill {
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-verde-claro);
+  color: var(--cor-verde-escuro);
+  font-weight: 500;
+  transition: all 0.18s ease;
+}
+
+.btn-vacina-pill:hover {
+  background-color: var(--cor-verde-claro);
+  border-color: var(--cor-verde-claro);
+  color: var(--cor-branco);
+}
+
+.btn-vacina-pill .icon-check {
+  display: none;
+}
+
+.btn-check:checked + .btn-vacina-pill {
+  background-color: var(--cor-verde-escuro);
+  border-color: var(--cor-verde-escuro);
+  color: var(--cor-branco);
+  font-weight: 600;
+}
+
+.btn-check:checked + .btn-vacina-pill .icon-check {
+  display: inline-block;
+}
